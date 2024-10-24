@@ -5,3 +5,6 @@ describe('sum test', () => {
 		expect(1 + 2).toBe(3);
 	});
 });
+
+import '$lib/debounce';
+import '$lib/toSlug';

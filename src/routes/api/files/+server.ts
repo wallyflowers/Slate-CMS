@@ -26,15 +26,17 @@ export async function POST({ request }: { request: Request }) {
 	const { slug, post } = await request.json();
 
 	if (!slug) {
+		console.log('A slug is required');
 		throw error(400, 'A slug is required');
 	}
 	if (!post) {
+		console.log('Post required in request json');
 		throw error(400, 'Post required in request json');
 	}
 
 	try {
-		const path = `assets/post/${slug}.json`;
-		await fs.writeFile(path, post);
+		const path = `assets/posts/${slug}.json`;
+		await fs.writeFile(path, JSON.stringify(post));
 
 		const options = {
 			status: 200,
@@ -43,8 +45,11 @@ export async function POST({ request }: { request: Request }) {
 			}
 		};
 
+		console.log(path);
+
 		return new Response(null, options);
-	} catch {
+	} catch (e) {
+		console.log(e);
 		throw error(400, 'Error creating post');
 	}
 }
