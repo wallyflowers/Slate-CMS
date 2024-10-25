@@ -2,9 +2,11 @@
 	import EditorState from '$lib/EditorState';
 	import { onMount, tick } from 'svelte';
 
-	export let titlePlaceholder: string;
 	/// Callback triggered when the editor attempts to save its content
-	//export let trySave: (content: EditorState) => void;
+	let {
+		titlePlaceholder,
+		trySave
+	}: { titlePlaceholder: string; trySave: (content: EditorState) => void } = $props();
 
 	let state = new EditorState();
 

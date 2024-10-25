@@ -1,4 +1,5 @@
 import type { SvelteComponent } from 'svelte';
+import { describe, test, expect } from 'vitest';
 
 export default class EditorState {
 	_title: string;
@@ -33,3 +34,9 @@ export interface Block {
 	id: number;
 	component: SvelteComponent;
 }
+
+describe('EditorState', () => {
+	test.todo('added blocks have ids in sequence');
+	test.todo('deleteBlock removes the block with the corresponding id');
+	test.todo('');
+});
